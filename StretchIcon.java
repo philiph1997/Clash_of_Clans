@@ -1,5 +1,3 @@
-package Clash_of_Clans;
-
 /**
  * @(#)StretchIcon.java	1.0 03/27/12
  */

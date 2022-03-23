@@ -1,11 +1,11 @@
-package Clash_of_Clans;
-
+import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.GridLayout;
 
 import java.awt.event.ActionEvent;
@@ -25,7 +25,7 @@ public class BurgGUI extends JFrame implements ActionListener{
     JLabel glueck_Label = new JLabel("Glück");
     JLabel reichtum_Label = new JLabel("Reichtum");
     JLabel verteidigung_Label = new JLabel("Verteidigung");
-    JButton glueck_Button = new JButton(String.valueOf(0));
+    JButton glueck_Button = new JButton("0");
     JButton reichtum_Button = new JButton("0");
     JButton verteidigung_Button = new JButton("0");
 
@@ -56,6 +56,7 @@ public class BurgGUI extends JFrame implements ActionListener{
         //NORTH 
         add(north_Panel, BorderLayout.NORTH);
         north_Panel.setLayout(north_Layout);
+        north_Panel.setBorder(BorderFactory.createLineBorder(Color.BLACK));
         north_Panel.add(titel_Label);
         north_Panel.add(statistik_Panel);
         statistik_Panel.setLayout(statistik_Layout);
@@ -74,8 +75,10 @@ public class BurgGUI extends JFrame implements ActionListener{
         add(center_Panel, BorderLayout.CENTER);
         center_Panel.setLayout(center_Layout);
         center_Panel.add(goldmine_Button);
+        goldmine_Button.setIcon(new StretchIcon("./Goldmine1.jpg", true));
         goldmine_Button.addActionListener(this);
         center_Panel.add(steingrube_Button);
+        steingrube_Button.setIcon(new StretchIcon("./SteingrubeIcon1.jpg", true));
         steingrube_Button.addActionListener(this);
         center_Panel.add(mauer_Button);
         mauer_Button.setIcon(new StretchIcon("./MauerIcon1.jpg", true));
