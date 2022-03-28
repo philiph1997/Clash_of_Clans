@@ -1,4 +1,5 @@
 public class goldmine implements gebaeude {
+    public int goldmenge;
 
     @Override
     public int getMaterial() {
