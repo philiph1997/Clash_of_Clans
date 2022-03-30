@@ -33,8 +33,11 @@ public class BurgGUI extends JFrame implements ActionListener{
     //CENTER
     JPanel center_Panel = new JPanel();
     GridLayout center_Layout = new GridLayout(1,3);
+    JPanel steingrube_Panel = new JPanel();
     JButton steingrube_Button = new JButton("Steingrube");
+    JPanel goldmine_Panel = new JPanel();
     JButton goldmine_Button = new JButton("Goldmine");
+    JPanel mauer_Panel = new JPanel();
     JButton mauer_Button = new JButton("Mauer");
     
 
@@ -74,13 +77,19 @@ public class BurgGUI extends JFrame implements ActionListener{
         //CENTER
         add(center_Panel, BorderLayout.CENTER);
         center_Panel.setLayout(center_Layout);
-        center_Panel.add(goldmine_Button);
+        center_Panel.add(goldmine_Panel);
+        goldmine_Panel.setLayout(new BorderLayout());
+        goldmine_Panel.add(goldmine_Button, BorderLayout.CENTER);
         goldmine_Button.setIcon(new StretchIcon("./Goldmine1.jpg", true));
         goldmine_Button.addActionListener(this);
-        center_Panel.add(steingrube_Button);
+        center_Panel.add(steingrube_Panel);
+        steingrube_Panel.setLayout(new BorderLayout());
+        steingrube_Panel.add(steingrube_Button, BorderLayout.CENTER);
         steingrube_Button.setIcon(new StretchIcon("./SteingrubeIcon1.jpg", true));
         steingrube_Button.addActionListener(this);
-        center_Panel.add(mauer_Button);
+        center_Panel.add(mauer_Panel);
+        mauer_Panel.setLayout(new BorderLayout());
+        mauer_Panel.add(mauer_Button, BorderLayout.CENTER);
         mauer_Button.setIcon(new StretchIcon("./MauerIcon1.jpg", true));
         mauer_Button.addActionListener(this);
 
