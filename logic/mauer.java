@@ -1,3 +1,7 @@
+package logic;
+
+import data.gebaeude;
+
 public class mauer implements gebaeude{
     int steinmenge;
     int produktionsgeschwindigkeit;

@@ -1,3 +1,7 @@
+package logic;
+
+import data.gebaeude;
+
 public class steingrube implements gebaeude {
     public int steinmenge;
     public int produktionsgeschwindigkeit;

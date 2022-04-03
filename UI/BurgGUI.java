@@ -1,8 +1,12 @@
+package UI;
+
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+
+import logic.Game;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -10,8 +14,11 @@ import java.awt.GridLayout;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 public class BurgGUI extends JFrame implements ActionListener{
+    Game game = new Game();
+   
     BorderLayout alpha_Layout = new BorderLayout();
     
     //NORTH
@@ -32,14 +39,14 @@ public class BurgGUI extends JFrame implements ActionListener{
 
     //CENTER
     JPanel center_Panel = new JPanel();
-    GridLayout center_Layout = new GridLayout(1,3);
+    /*
     JPanel steingrube_Panel = new JPanel();
     JButton steingrube_Button = new JButton("Steingrube");
     JPanel goldmine_Panel = new JPanel();
     JButton goldmine_Button = new JButton("Goldmine");
     JPanel mauer_Panel = new JPanel();
     JButton mauer_Button = new JButton("Mauer");
-    
+    */
 
     //SOUTH
     JPanel south_Panel = new JPanel();
@@ -75,23 +82,31 @@ public class BurgGUI extends JFrame implements ActionListener{
         verteidigung_Button.setEnabled(false);   
 
         //CENTER
+        int x = game.getGebaeudeLength();
+        GridLayout center_Layout = new GridLayout(1,x);
         add(center_Panel, BorderLayout.CENTER);
         center_Panel.setLayout(center_Layout);
-        center_Panel.add(goldmine_Panel);
-        goldmine_Panel.setLayout(new BorderLayout());
-        goldmine_Panel.add(goldmine_Button, BorderLayout.CENTER);
-        goldmine_Button.setIcon(new StretchIcon("./Goldmine1.jpg", true));
-        goldmine_Button.addActionListener(this);
-        center_Panel.add(steingrube_Panel);
-        steingrube_Panel.setLayout(new BorderLayout());
-        steingrube_Panel.add(steingrube_Button, BorderLayout.CENTER);
-        steingrube_Button.setIcon(new StretchIcon("./SteingrubeIcon1.jpg", true));
-        steingrube_Button.addActionListener(this);
-        center_Panel.add(mauer_Panel);
-        mauer_Panel.setLayout(new BorderLayout());
-        mauer_Panel.add(mauer_Button, BorderLayout.CENTER);
-        mauer_Button.setIcon(new StretchIcon("./MauerIcon1.jpg", true));
-        mauer_Button.addActionListener(this);
+        ArrayList gebaeudeList = game.getGebaeudeList();
+        for (Object gebaeudeObject: gebaeudeList){
+            if(gebaeudeObject == "Mauer"){
+                center_Panel.add(new mauerPanel());        
+            }
+            else if (gebaeudeObject == "Steingrube"){
+                center_Panel.add(new steingrubePanel());
+            }
+            else if (gebaeudeObject == "Goldmine"){
+                center_Panel.add(new goldPanel());
+            }
+            else{
+                JButton error_Button = new JButton("Error");
+                error_Button.setEnabled(false);
+                center_Panel.add(error_Button);
+            }
+        }
+        /*center_Panel.add(new goldPanel());
+        center_Panel.add(new steingrubePanel());
+        center_Panel.add(new mauerPanel());
+        center_Panel.add(new goldPanel());*/
 
         //SOUTH
         add(south_Panel, BorderLayout.SOUTH);
@@ -109,7 +124,7 @@ public class BurgGUI extends JFrame implements ActionListener{
     @Override
     public void actionPerformed(ActionEvent event) {
         // TODO Auto-generated method stub
-        if (event.getSource()==goldmine_Button) {
+        /*if (event.getSource()==goldmine_Button) {
             //reichtum_Label.setText();;
         }
         if (event.getSource()==steingrube_Button) {
@@ -117,6 +132,6 @@ public class BurgGUI extends JFrame implements ActionListener{
         }
         if (event.getSource()==mauer_Button){
 
-        }
+        }*/
     }
 }
