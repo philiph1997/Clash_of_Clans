@@ -16,7 +16,7 @@ public class steingrube implements gebaeude {
     @Override
     public void setMaterial(int material) {
         // TODO Auto-generated method stub
-        gamedata.add_totalSteinmenge(material);
+        // gamedata.add_totalSteinmenge(material);
     }
     /*
     @Override

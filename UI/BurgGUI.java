@@ -30,13 +30,17 @@ public class BurgGUI extends JFrame implements ActionListener{
     JLabel titel_Label = new JLabel("Clash of Clans");
     
     JPanel statistik_Panel = new JPanel();
-    GridLayout statistik_Layout = new GridLayout(3,2);
-    JLabel glueck_Label = new JLabel("Glück");
+    GridLayout statistik_Layout = new GridLayout(4,2);
+
+    JLabel stein_Label = new JLabel("Stein");
     JLabel reichtum_Label = new JLabel("Reichtum");
     JLabel verteidigung_Label = new JLabel("Verteidigung");
-    JButton glueck_Button = new JButton("0");
+    JLabel total_Label = new JLabel("Total-Level");
+
+    JButton stein_Button = new JButton("0");
     JButton reichtum_Button = new JButton("0");
     JButton verteidigung_Button = new JButton("0");
+    JButton total_Button = new JButton("0");
 
 
     //CENTER
@@ -58,39 +62,48 @@ public class BurgGUI extends JFrame implements ActionListener{
 		setTitle("Clash_of_Clans");
 
         //NORTH 
-        //=================================================================================================
-        //Statistiken mit GameData verknüpfen
         add(north_Panel, BorderLayout.NORTH);
         north_Panel.setLayout(north_Layout);
         north_Panel.setBorder(BorderFactory.createLineBorder(Color.BLACK));
         north_Panel.add(titel_Label);
+
         north_Panel.add(statistik_Panel);
         statistik_Panel.setLayout(statistik_Layout);
-        statistik_Panel.add(glueck_Label);
-        statistik_Panel.add(glueck_Button);//getPunkte
-        glueck_Button.setEnabled(false);
+        statistik_Panel.add(stein_Label);
+        statistik_Panel.add(stein_Button);
+        stein_Button.setEnabled(false);
+        stein_Button.setText(String.valueOf(game.getTotal_Steinmenge()));
+
         statistik_Panel.add(reichtum_Label);
-        statistik_Panel.add(reichtum_Button);//getPunkte
+        statistik_Panel.add(reichtum_Button);
         reichtum_Button.setEnabled(false);
+        reichtum_Button.setText(String.valueOf(game.getTotal_Reichtum()));
+
         statistik_Panel.add(verteidigung_Label);
-        statistik_Panel.add(verteidigung_Button);//getPunkte
-        verteidigung_Button.setEnabled(false); 
-        //=================================================================================================  
+        statistik_Panel.add(verteidigung_Button);
+        verteidigung_Button.setEnabled(false);
+        verteidigung_Button.setText(String.valueOf(game.getTotal_Verteidigung())); 
+
+        statistik_Panel.add(total_Label);
+        statistik_Panel.add(total_Button);
+        total_Button.setEnabled(false);
+        total_Button.setText(String.valueOf(game.getTotal())); 
 
         //CENTER
         add(center_Panel, BorderLayout.CENTER);
         int x = game.getGebaeudeLength();
         GridLayout center_Layout = new GridLayout(1,x);
         center_Panel.setLayout(center_Layout);
-        ArrayList gebaeudeList = game.getGebaeudeList();
-        for (Object gebaeudeObject: gebaeudeList){
-            if(gebaeudeObject == "Mauer"){
+        ArrayList<String> gebaeudeListStrings = game.getGebaeudeListStrings();
+        
+        for (String gebaeudeObject: gebaeudeListStrings){
+            if(gebaeudeObject == "mauer"){
                 center_Panel.add(new mauerPanel());        
             }
-            else if (gebaeudeObject == "Steingrube"){
+            else if (gebaeudeObject.equals("steingrube")){
                 center_Panel.add(new steingrubePanel());
             }
-            else if (gebaeudeObject == "Goldmine"){
+            else if (gebaeudeObject == "goldmine"){
                 center_Panel.add(new goldPanel());
             }
             else{
