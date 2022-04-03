@@ -4,8 +4,10 @@ import java.awt.BorderLayout;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
+import logic.mauer;
+
 public class mauerPanel extends JPanel{
-    //private Goldmine mine;
+    private mauer mauer;
 
     public mauerPanel(){
         this.setLayout(new BorderLayout());

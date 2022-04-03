@@ -4,8 +4,11 @@ import java.awt.BorderLayout;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
+import logic.Game;
+import logic.steingrube;
+
 public class steingrubePanel extends JPanel{
-    //private Goldmine mine;
+    private steingrube grube;
 
     public steingrubePanel(){
         this.setLayout(new BorderLayout());

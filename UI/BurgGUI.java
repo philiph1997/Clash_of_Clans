@@ -16,6 +16,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
+import UI.Panels.*;
+
 public class BurgGUI extends JFrame implements ActionListener{
     Game game = new Game();
    
@@ -39,14 +41,6 @@ public class BurgGUI extends JFrame implements ActionListener{
 
     //CENTER
     JPanel center_Panel = new JPanel();
-    /*
-    JPanel steingrube_Panel = new JPanel();
-    JButton steingrube_Button = new JButton("Steingrube");
-    JPanel goldmine_Panel = new JPanel();
-    JButton goldmine_Button = new JButton("Goldmine");
-    JPanel mauer_Panel = new JPanel();
-    JButton mauer_Button = new JButton("Mauer");
-    */
 
     //SOUTH
     JPanel south_Panel = new JPanel();
@@ -64,13 +58,14 @@ public class BurgGUI extends JFrame implements ActionListener{
 		setTitle("Clash_of_Clans");
 
         //NORTH 
+        //=================================================================================================
+        //Statistiken mit GameData verknüpfen
         add(north_Panel, BorderLayout.NORTH);
         north_Panel.setLayout(north_Layout);
         north_Panel.setBorder(BorderFactory.createLineBorder(Color.BLACK));
         north_Panel.add(titel_Label);
         north_Panel.add(statistik_Panel);
         statistik_Panel.setLayout(statistik_Layout);
-        //Vererbung??
         statistik_Panel.add(glueck_Label);
         statistik_Panel.add(glueck_Button);//getPunkte
         glueck_Button.setEnabled(false);
@@ -79,12 +74,13 @@ public class BurgGUI extends JFrame implements ActionListener{
         reichtum_Button.setEnabled(false);
         statistik_Panel.add(verteidigung_Label);
         statistik_Panel.add(verteidigung_Button);//getPunkte
-        verteidigung_Button.setEnabled(false);   
+        verteidigung_Button.setEnabled(false); 
+        //=================================================================================================  
 
         //CENTER
+        add(center_Panel, BorderLayout.CENTER);
         int x = game.getGebaeudeLength();
         GridLayout center_Layout = new GridLayout(1,x);
-        add(center_Panel, BorderLayout.CENTER);
         center_Panel.setLayout(center_Layout);
         ArrayList gebaeudeList = game.getGebaeudeList();
         for (Object gebaeudeObject: gebaeudeList){
@@ -103,15 +99,14 @@ public class BurgGUI extends JFrame implements ActionListener{
                 center_Panel.add(error_Button);
             }
         }
-        /*center_Panel.add(new goldPanel());
-        center_Panel.add(new steingrubePanel());
-        center_Panel.add(new mauerPanel());
-        center_Panel.add(new goldPanel());*/
 
         //SOUTH
         add(south_Panel, BorderLayout.SOUTH);
         south_Panel.setLayout(south_Layout);
+        //=================================================================================================
+        //Benutzername einfügen (eventuell vom User)
         south_Panel.add(benutzer_Label);
+        //=================================================================================================
         south_Panel.add(zurWeltkarte_Button);
         zurWeltkarte_Button.setEnabled(false);
         south_Panel.add(exit_Button);
@@ -120,7 +115,8 @@ public class BurgGUI extends JFrame implements ActionListener{
         
         setVisible(true);
     }
-
+    //=================================================================================================
+    //CLick-Events noch ausführen lassen
     @Override
     public void actionPerformed(ActionEvent event) {
         // TODO Auto-generated method stub
@@ -133,5 +129,6 @@ public class BurgGUI extends JFrame implements ActionListener{
         if (event.getSource()==mauer_Button){
 
         }*/
+    //=================================================================================================
     }
 }

@@ -14,19 +14,17 @@ public class Game {
     public Game(){ 
         this.gebaeudeList = gamedata.getArrayList();
         System.out.println(gebaeudeList);
-        /*
-        int count = 0;
-        
         for (Object element: gebaeudeList){
-            count = count + 1;
-            System.out.println(count + ": " + element);
+            if(element == "Mauer"){
+                gebaeudeList.add(new mauer(gamedata));        
+            }
+            else if (element == "Steingrube"){
+                gebaeudeList.add(new steingrube(gamedata));
+            }
+            else if (element == "Goldmine"){
+                gebaeudeList.add(new goldmine(gamedata));
+            }
         }
-        size = gebaeudeList.size()-1;
-        System.out.println(size);
-        for(int i = 0; i >= size-1; i++){
-            Object gebaeudeObject = gebaeudeList.get(i);
-            System.out.println(gebaeudeObject);
-        }*/
     }
     
     public ArrayList getGebaeudeList(){
@@ -34,5 +32,10 @@ public class Game {
     }
     public int getGebaeudeLength() {
         return gebaeudeList.size()-1;
+    }
+
+
+    public void subtractSteinmenge(int steine){
+        gamedata.subtract_totalSteinmenge(steine);
     }
 }
