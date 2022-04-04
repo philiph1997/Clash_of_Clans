@@ -4,52 +4,32 @@ import data.GameData;
 import data.gebaeude;
 
 public class goldmine implements gebaeude {
-    public int gebaeudeGoldmenge = 0;
-    public int gebaeudeProduktionsgeschwindigkeit = 1;
-    GameData gamedata;
-    //steinmenge aus GameData nehmen
-
-    public goldmine(GameData gameData){
-        gebaeudeGoldmenge = 0;
-        gebaeudeProduktionsgeschwindigkeit = 1;
-        gamedata = this.gamedata;
+    private int produktionsgeschwindigkeit;
+    private GameData gamedata;
+ 
+    
+    public goldmine(GameData gamedata){
+        this.gamedata = gamedata;
+        this.produktionsgeschwindigkeit = 1;
     }
-    /*
-    @Override
-    public int getMaterial() {
-        // TODO Auto-generated method stub
-        return gebaeudeGoldmenge;
+    
+    // Wert des Totals erhöhen
+    public void increaseTotal(){
+        gamedata.setTotal_reichtum(gamedata.getTotal_reichtum() + produktionsgeschwindigkeit);          
     }
 
-    @Override
-    public int getProduktionsgeschwindigkeit() {
-        // TODO Auto-generated method stub
-        return gebaeudeProduktionsgeschwindigkeit;
+    // Total Wert zurückgeben
+    public int getTotal(){
+        return gamedata.getTotal_reichtum();
     }
 
-    @Override
-    public void payStein(int kosten) {
-        // TODO Auto-generated method stub
-        //steinmenge aus GameData holen
-        //steinmenge = steinmenge - kosten;
-    }
-    */
-
-    @Override
-    public void setMaterial(int material) {
-        // TODO Auto-generated method stub
-        
+    // Wert minimieren
+    public void decreaseTotal(){
+        gamedata.setTotal_reichtum(gamedata.getTotal_reichtum() - 1);
     }
 
-    @Override
-    public int getProduktionsgeschwindigkeit() {
-        // TODO Auto-generated method stub
-        return 0;
-    }
-
-    @Override
-    public void payStein(int kosten) {
-        // TODO Auto-generated method stub
-        
+    // Produktionsgeschwindigkeit erhöhen
+    public void setProduktionsgeschwindigkeit(int level) {
+        this.produktionsgeschwindigkeit = this.produktionsgeschwindigkeit + level;
     }
 }

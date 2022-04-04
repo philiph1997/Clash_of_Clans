@@ -4,57 +4,29 @@ import data.GameData;
 import data.gebaeude;
 
 public class mauer implements gebaeude{
-    int steinmenge;
-    int produktionsgeschwindigkeit;
-    GameData gamedata;
+    private int produktionsgeschwindigkeit;
+    private GameData gamedata;
+    private Game game;
 
     public mauer(GameData gamedata) {
-        gamedata = this.gamedata;
-        steinmenge = 0;
-        produktionsgeschwindigkeit = 0;
-    }
-    /*
-    @Override
-    public int getMaterial() {
-        // TODO Auto-generated method stub
-        return steinmenge;
+        this.gamedata = gamedata;
+        this.produktionsgeschwindigkeit = 1;
     }
 
-    public void buildMauer() {
-        steinmenge = steinmenge - getProduktionsgeschwindigkeit();
+    public void decreaseTotal(){
+       this.gamedata.setTotal_reichtum(this.gamedata.getTotal_reichtum() - 1);
     }
 
-    @Override
-    public void payStein(int kosten){
-        steinmenge = steinmenge - kosten;
+    public int getTotal(){
+        return this.gamedata.getTotal_verteidigung();
     }
 
-    @Override
-    public int getProduktionsgeschwindigkeit() {
-        // TODO Auto-generated method stub
-        return produktionsgeschwindigkeit;
+    public void increaseTotal(){
+        this.gamedata.setTotal_verteidigung(this.
+        gamedata.getTotal_verteidigung() + this.produktionsgeschwindigkeit);
     }
-    
+
     public void setProduktionsgeschwindigkeit(int level) {
-        produktionsgeschwindigkeit = produktionsgeschwindigkeit + level;
-    }
-    */
-
-    @Override
-    public void setMaterial(int material) {
-        // TODO Auto-generated method stub
-        
-    }
-
-    @Override
-    public int getProduktionsgeschwindigkeit() {
-        // TODO Auto-generated method stub
-        return 0;
-    }
-
-    @Override
-    public void payStein(int kosten) {
-        // TODO Auto-generated method stub
-        
+       this.produktionsgeschwindigkeit = this.produktionsgeschwindigkeit + level;
     }
 }
